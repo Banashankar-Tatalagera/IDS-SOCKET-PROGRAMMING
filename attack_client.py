@@ -1,9 +1,11 @@
 import socket
 import time
+import streamlit as st
+import threading
 
 def send_requests(target_ip, target_port, attack_type, rate=1):
     """Simulates network traffic based on attack type"""
-    print(f"🚀 Sending {attack_type} traffic to {target_ip}:{target_port} at {rate} req/sec")
+    st.write(f"🚀 Sending {attack_type} traffic to {target_ip}:{target_port} at {rate} req/sec")
     
     for _ in range(20):  # Number of requests to send
         try:
@@ -11,36 +13,31 @@ def send_requests(target_ip, target_port, attack_type, rate=1):
             s.connect((target_ip, target_port))
             s.send(attack_type.encode('utf-8'))
             s.close()
-            print(f"✅ Sent {attack_type} request.")
+            st.write(f"✅ Sent {attack_type} request.")
         except Exception as e:
-            print(f"❌ Error: {e}")
+            st.error(f"❌ Error: {e}")
         time.sleep(1 / rate)  # Control request rate
 
+def main():
+    st.title("IDS Traffic Simulator")
+    
+    target_ip = st.text_input("🎯 Enter IDS Server IP", "127.0.0.1")
+    target_port = st.number_input("🎯 Enter IDS Server Port", min_value=1, max_value=65535, value=9999)
+    
+    st.subheader("🚦 Choose Traffic Type:")
+    attack_type = st.selectbox("Select Attack Type", ["Normal Traffic", "SYN Flood", "UDP Flood", "ICMP Flood"])
+    
+    rate = 1
+    if attack_type == "SYN Flood":
+        rate = 10
+    elif attack_type == "UDP Flood":
+        rate = 20
+    elif attack_type == "ICMP Flood":
+        rate = 15
+    
+    if st.button("Start Attack"):
+        threading.Thread(target=send_requests, args=(target_ip, target_port, attack_type.upper().replace(" ", "_"), rate), daemon=True).start()
+        st.success(f"Started {attack_type} attack on {target_ip}:{target_port}")
+
 if __name__ == "__main__":
-    print("🌐 Welcome to IDS Traffic Simulator")
-    
-    target_ip = input("🎯 Enter IDS Server IP (e.g., 127.0.0.1 or 192.168.x.x): ")
-    target_port = int(input("🎯 Enter IDS Server Port (default: 9999): "))
-
-    print("\n🚦 Choose Traffic Type:")
-    print("1️⃣ Normal Traffic (1 req/sec) 🟢")
-    print("2️⃣ SYN Flood (10 req/sec) 🔃")
-    print("3️⃣ UDP Flood (20 req/sec) 📤📥")
-    print("4️⃣ ICMP Flood (15 req/sec) 📡💬")
-    
-    choice = input("🔽 Enter your choice (1-4): ")
-
-    if choice == "1":
-        print("🟢 Sending Normal Traffic...")
-        send_requests(target_ip, target_port, "NORMAL", rate=1)
-    elif choice == "2":
-        print("🔃 Launching SYN Flood Attack...")
-        send_requests(target_ip, target_port, "SYN_FLOOD", rate=10)
-    elif choice == "3":
-        print("📤📥 Launching UDP Flood Attack...")
-        send_requests(target_ip, target_port, "UDP_FLOOD", rate=20)
-    elif choice == "4":
-        print("📡💬 Launching ICMP Flood Attack...")
-        send_requests(target_ip, target_port, "ICMP_FLOOD", rate=15)
-    else:
-        print("❌ Invalid choice! Please enter a number between 1-4.")
+    main()
