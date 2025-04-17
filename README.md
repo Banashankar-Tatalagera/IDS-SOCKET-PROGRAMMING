@@ -88,10 +88,34 @@ Use this to simulate different types of traffic from a GUI. It can:
 
 ## ⚠️ Disclaimer
 
-This project is for educational and simulation purposes **only**. Do not use it for unauthorized testing or attacks.
+This project is **intended solely for educational and simulation purposes**. 
+
+- It does **NOT perform real UDP or ICMP flooding**. All traffic is sent over **TCP** for testing Intrusion Detection System (IDS) logic.
+- **Do NOT use this script for unauthorized access, attacks, or in production environments**.
+- By running this code, you **agree that you are solely responsible for any outcomes**.
+
+Use it responsibly and ethically!
+
 
 ---
 
 ## 👨‍💻 Author
 
 Made by [Banashankar Tatalagera](https://github.com/Banashankar-Tatalagera)
+
+------------------------------------------------
+
+## 🙌 Contributors
+
+Thanks to all contributors who made this project possible:
+
+| Name                   | GitHub Profile                                                        |
+|------------------------|------------------------------------------------------------------------|
+| Banashankar Tatalagera | [@Banashankar-Tatalagera](https://github.com/Banashankar-Tatalagera) |
+|Gujjar R Suman Rao              | [@suman184](https://github.com/suman184)                             |
+| Darshit M S               | [@Darshu-2004](https://github.com/Darshu-2004)                        |
+
+
+
+
+
