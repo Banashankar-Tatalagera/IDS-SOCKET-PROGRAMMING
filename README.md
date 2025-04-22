@@ -99,9 +99,7 @@ Use it responsibly and ethically!
 
 ---
 
-## 👨‍💻 Author
 
-Made by [Banashankar Tatalagera](https://github.com/Banashankar-Tatalagera)
 
 ------------------------------------------------
 
