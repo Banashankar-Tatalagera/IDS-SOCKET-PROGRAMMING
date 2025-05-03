@@ -4,6 +4,10 @@
 This is a simple Intrusion Detection System (IDS) built using Python and socket programming, with an interactive Streamlit interface. It detects basic DoS-style attacks like SYN, UDP, and ICMP floods.
 
 ---
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
+[![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-ff4b4b.svg)](https://streamlit.io)
+[![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)]()
+[![GitHub Repo stars](https://img.shields.io/github/stars/Banashankar-Tatalagera/MORSE_CODE_ENCODER_DECODER?style=social)](https://github.com/Banashankar-Tatalagera/MORSE_CODE_ENCODER_DECODER)
 
 ## 📦 Features
 
@@ -114,6 +118,8 @@ Thanks to all contributors who made this project possible:
 | Banashankar Tatalagera | [@Banashankar-Tatalagera](https://github.com/Banashankar-Tatalagera) |
 |Gujjar R Suman Rao              | [@suman184](https://github.com/suman184)                             |
 | Darshit M S               | [@Darshu-2004](https://github.com/Darshu-2004)                        |
+
+
 
 
 
